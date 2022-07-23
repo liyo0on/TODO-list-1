@@ -77,32 +77,35 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: scaleY(1) translate(-50%,-50%);
             z-index: 0;
             border-radius: 5px;
+            transition: all 1s ease-in;
         }
-        .close-todo-panel{
+        .open-todo-panel{
             animation: closeTodoPanel 1s ease-out forwards;
-            animation-delay: 0.5s;
             
         }
-        .close-todo-panel > * {
+        .open-todo-panel > * {
             animation: todoPanelChild 0.5s ease-out forwards;
+            opacity: 1;
+            animation-delay: 1s;
         }
+        
         @keyframes todoPanelChild {
             0%{
-                opacity: 1;
+                opacity: 0;
             }
             100%{
-                opacity: 0;
+                opacity: 1;
             }
         }
         @keyframes closeTodoPanel {
             0%{
-                transform: scaleY(1) translate(-50%,-50%);
+                transform: scaleY(0) translate(-50%,-50%);
             }
             100%{ 
-                transform: scaleY(0) translate(-50%,-50%);
+                transform: scaleY(1) translate(-50%,-50%);
             }
         }
             .create-todo-form{
@@ -154,6 +157,63 @@
                     /*display flex*/
                     gap: 22px;
                 }
+                    .priorities-menu{
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        flex-direction: row;
+                        gap: 10px;
+                        /*display flex*/
+                        /* border: 2px solid #004777; */
+                    }
+                        .priorities-menu-title-item{
+                            width: 40%;
+                            background-color: var(--light-yellow);
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-direction: row;
+                            /*display flex*/
+                            padding: 5px;
+                            position: relative;
+                            color: var(--dark-gray);
+                        }
+                            .open-priorities-menu-btn{
+                                width: 30px;
+                                cursor: pointer;
+                                background-color: transparent;
+                                border: none;
+                                font-size: 20px;
+                            }
+                            .priorities-options-menu{
+                                width: 100%;
+                                position: absolute;
+                                top: 35px;
+                                left: 0;
+                                background-color: var(--navy-blue);
+                                z-index: 99;
+                                padding: 5px;
+                                cursor: pointer;
+                                text-transform: uppercase;
+                                display: none;
+                                
+                            }
+                            .priorities-options label{
+                                width: 100%;
+                                display: block;
+                                cursor: pointer;
+                            }
+                            .priorities-options-menu input{
+                                display: none;
+                            }
+                            .priorities-options{
+                                width: 100%;
+                                color: var(--light-yellow);
+                            }
+                    .priorities input{
+                        /* display: none; */
+                    }
                     .create-todo-form-inputs input{
                         background-color: transparent;
                         /* border: none; */
@@ -234,7 +294,7 @@
                 padding: 10px;
                 background-color: var(--dark-gray);
                 /* overflow: hidden; */
-                box-shadow: -5px 5px 2px 0px var(--normal-blue);
+                
             }
 
                 .todos-lis-text{

@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="styles/main.css" />
-    <script src="https://kit.fontawesome.com/186770065d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/186770065d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/script.js" defer></script>
     <title>TODO</title>
   </head>
   <body>
     <div class="container">
-        <div class="folder-list main-parts">folders</div>
-        <div class="todos-list main-parts">
-            <ul class="todos-list-ul">
-                <li class="todos-list-lis">
+      <div class="folder-list main-parts">folders</div>
+      <div class="todos-list main-parts">
+        <ul class="todos-list-ul">
+          <!-- <li class="todos-list-lis">
                     <div class="todos-lis-text">
                         <h3 class="todos-text-title">title</h3>
                         <p class="todos-text-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab tempore veritatis sequi magni obcaecati consequuntur deleniti provident vel, esse ex illum. Officia vel non, quos vitae quia, distinctio ea id quasi maiores optio maxime saepe in soluta, et commodi tempore facilis consequatur. Dignissimos laboriosam sed amet provident repellat ut.
@@ -45,62 +48,136 @@
                             <i class="far fa-trash-alt"></i>
                         </button>
                     </div>
-                </li>
-            </ul>
-            <button class="create-new-todo-btn"><i class="fas fa-plus-circle"></i></button>
-            <div class="create-todo-panel close-todo-panel">
-                <form class="create-todo-form">
-                    <div class="create-todo-form-texts">
-                        <h3>title</h3>
-                        <h3>description</h3>
-                        <h3>link</h3>
-                        <h3>label of link</h3>
-                        <h3>priority</h3>
-                        <h3>time</h3>
-                    </div>
-                    <div class="create-todo-form-inputs">
-                        <input type="text" class="title-input" placeholder="your task title ...">
-                        <input type="text" class="description-input" placeholder="your task description">
-                        <input type="text" class="link-input" placeholder="https://....">
-                        <input type="text" class="link-label" placeholder="label of link ...">
-                        <select class="priority-input">
-                            <option value="choose">choose priority</option>
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
-                        <div class="create-todo-inputs-time">
-                            <div class="todo-timer-counters todo-timer-hour">
-                                <button class="todo-timer-btns increase-btns"><i class="fas fa-angle-up"></i> </button>
-                                <h2 class="todo-timer-counter-hours">00</h2>
-                                <button class="todo-timer-btns decrease-btns"><i class="fas fa-angle-down"></i> </button>
-                            </div>
-
-                            <span>:</span>
-
-                            <div class="todo-timer-counters todo-timer-mins">
-                                <button class="todo-timer-btns increase-btns"><i class="fas fa-angle-up"></i> </button>
-                                <h2 class="todo-timer-counter-mins">00</h2>
-                                <button class="todo-timer-btns decrease-btns"><i class="fas fa-angle-down"></i> </button>
-                            </div>
-
-                            <span>:</span>
-
-                            <div class="todo-timer-counters todo-timer-sec">
-                                <button class="todo-timer-btns increase-btns"><i class="fas fa-angle-up"></i> </button>
-                                <h2 class="todo-timer-counter-secs">00</h2>
-                                <button class="todo-timer-btns decrease-btns"><i class="fas fa-angle-down"></i> </button>
-                            </div>
-                        </div>
-                        <!-- create-todo-inputs-time -->
-                    </div>
-                    <!-- class="create-todo-form-inputs -->
-                    <input type="submit" class="create-form-submit-btn">
-                </form>
-                <div class="create-todo-preview"></div>
+                </li> -->
+        </ul>
+        <button class="create-new-todo-btn">
+          <i class="fas fa-plus-circle"></i>
+        </button>
+        <div class="create-todo-panel">
+          <form class="create-todo-form">
+            <div class="create-todo-form-texts">
+              <h3>title</h3>
+              <h3>description</h3>
+              <h3>link</h3>
+              <h3>label of link</h3>
+              <h3>priority</h3>
+              <h3>timer</h3>
             </div>
-            <!-- create-todo-panel -->
+            <div class="create-todo-form-inputs">
+              <input
+                type="text"
+                class="title-input"
+                placeholder="your task title ..."
+              />
+              <input
+                type="text"
+                class="description-input"
+                placeholder="your task description"
+              />
+              <input
+                type="text"
+                class="link-input"
+                placeholder="https://...."
+              />
+              <input
+                type="text"
+                class="link-label"
+                placeholder="label of link ..."
+              />
+
+              <ul class="priorities-menu">
+                <li class="priorities-menu-title-item" >
+                  <h3 class="priority-labels-title">choose priority</h3>
+                  <button class="open-priorities-menu-btn">
+                    <i class="fas fa-caret-right"></i>
+                  </button>
+                  <ul class="priorities-options-menu">
+                    <li class="priorities-options">
+                      <input
+                      type="radio"
+                      name="priority-inputs"
+                      id="high-priority"
+                      value="red"
+                      />
+                      <label for="high-priority" class="priority-labels">High</label>
+                    </li>
+                    <li class="priorities-options">
+                      <input
+                        type="radio"
+                        name="priority-inputs"
+                        id="medium-priority"
+                        value="yellow"
+                      />
+                      <label for="medium-priority" class="priority-labels">Medium</label>
+                    </li>
+                    <li class="priorities-options">
+                      <input
+                        type="radio"
+                        name="priority-inputs"
+                        id="low-priority"
+                        value="#00ffff"
+                        checked
+                      />
+                      <label for="low-priority" class="priority-labels" >Low</label>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <div class="create-todo-inputs-time">
+                <div class="todo-timer-counters todo-timer-hour">
+
+                  <button class="todo-timer-btns increase-btns hours-increase-btn">
+                    <i class="fas fa-angle-up"></i>
+                  </button>
+
+                  
+                  <button class="todo-timer-btns decrease-btns hours-decrease-btn">
+                      <i class="fas fa-angle-down"></i>
+                    </button>
+                    
+                    <h2 class="todo-timer-hours-display">00</h2>
+                </div>
+
+                <span>:</span>
+
+                <div class="todo-timer-counters todo-timer-mins">
+
+                    <button class="todo-timer-btns increase-btns minutes-increase-btn">
+                    <i class="fas fa-angle-up"></i>
+                    </button>
+                    <button class="todo-timer-btns decrease-btns minutes-decrease-btn">
+                      <i class="fas fa-angle-down"></i>
+                    </button>
+                    <h2 class="todo-timer-mins-display">00</h2>
+
+                </div>
+
+                <span>:</span>
+
+                <div class="todo-timer-counters todo-timer-sec ">
+
+                  <button class="todo-timer-btns increase-btns seconds-increase-btn">
+                    <i class="fas fa-angle-up"></i>
+                  </button>
+
+                  
+                  <button class="todo-timer-btns decrease-btns seconds-decrease-btn">
+                      <i class="fas fa-angle-down"></i>
+                    </button>
+                    <h2 class="todo-timer-secs-display">00</h2>
+
+                </div>
+              </div>
+              <!-- create-todo-inputs-time -->
+            </div>
+            <!-- class="create-todo-form-inputs -->
+            <input type="submit" class="create-form-submit-btn" />
+          </form>
+          <div class="create-todo-preview"></div>
         </div>
+        <!-- create-todo-panel -->
+      </div>
     </div>
     <!-- container -->
   </body>
