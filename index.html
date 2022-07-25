@@ -9,47 +9,15 @@
       src="https://kit.fontawesome.com/186770065d.js"
       crossorigin="anonymous"
     ></script>
-    <script src="scripts/script.js" defer></script>
+    <!-- <script src="scripts/script.js" defer></script> -->
+    <script src="scripts/objective-script.js" defer></script>
     <title>TODO</title>
   </head>
   <body>
     <div class="container">
       <div class="folder-list main-parts">folders</div>
       <div class="todos-list main-parts">
-        <ul class="todos-list-ul">
-          <!-- <li class="todos-list-lis">
-                    <div class="todos-lis-text">
-                        <h3 class="todos-text-title">title</h3>
-                        <p class="todos-text-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ab tempore veritatis sequi magni obcaecati consequuntur deleniti provident vel, esse ex illum. Officia vel non, quos vitae quia, distinctio ea id quasi maiores optio maxime saepe in soluta, et commodi tempore facilis consequatur. Dignissimos laboriosam sed amet provident repellat ut.
-                        </p>
-                        <a href="#" class="todos-text-link">link</a>
-                        <button class="todos-description-show-btn" title="show more">
-                            <i class="fas fa-caret-down"></i>
-                        </button>
-                    </div>
-                    <div class="todos-lis-options">
-                        <div class="todos-timer-option">
-                            <button class="todos-timer-start-btn">
-                                <i class="far fa-play-circle"></i>
-                            </button>
-                            <p class="todos-timer-display"><span class="todos-timer-hours">0h</span> : <span class="todos-timer-minutes">0m</span> : <span class="todos-timer-seconds ">0s</span>
-                            </p>
-                        </div>
-                        <button class="todos-options-btns lis-options-done" title="done">
-                            <i class="fas fa-check"></i>
-                        </button>
-                        <button class="todos-options-btns lis-options-favorite" title="make favorite">
-                            <i class="far fa-star"></i>
-                        </button>
-                        <button class="todos-options-btns lis-options-comment" title="comments">
-                            <i class="far fa-comment-alt"></i>
-                        </button>
-                        <button class="todos-options-btns lis-options-remove" title="remove">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </div>
-                </li> -->
-        </ul>
+        <ul class="todos-list-ul"></ul>
         <button class="create-new-todo-btn">
           <i class="fas fa-plus-circle"></i>
         </button>
@@ -86,7 +54,7 @@
               />
 
               <ul class="priorities-menu">
-                <li class="priorities-menu-title-item" >
+                <li class="priorities-menu-title-item">
                   <h3 class="priority-labels-title">choose priority</h3>
                   <button class="open-priorities-menu-btn">
                     <i class="fas fa-caret-right"></i>
@@ -94,12 +62,14 @@
                   <ul class="priorities-options-menu">
                     <li class="priorities-options">
                       <input
-                      type="radio"
-                      name="priority-inputs"
-                      id="high-priority"
-                      value="red"
+                        type="radio"
+                        name="priority-inputs"
+                        id="high-priority"
+                        value="red"
                       />
-                      <label for="high-priority" class="priority-labels">High</label>
+                      <label for="high-priority" class="priority-labels"
+                        >High</label
+                      >
                     </li>
                     <li class="priorities-options">
                       <input
@@ -108,7 +78,9 @@
                         id="medium-priority"
                         value="yellow"
                       />
-                      <label for="medium-priority" class="priority-labels">Medium</label>
+                      <label for="medium-priority" class="priority-labels"
+                        >Medium</label
+                      >
                     </li>
                     <li class="priorities-options">
                       <input
@@ -118,7 +90,9 @@
                         value="#00ffff"
                         checked
                       />
-                      <label for="low-priority" class="priority-labels" >Low</label>
+                      <label for="low-priority" class="priority-labels"
+                        >Low</label
+                      >
                     </li>
                   </ul>
                 </li>
@@ -126,48 +100,63 @@
 
               <div class="create-todo-inputs-time">
                 <div class="todo-timer-counters todo-timer-hour">
-
-                  <button class="todo-timer-btns increase-btns hours-increase-btn">
+                  <button
+                    class="todo-timer-btns increase-btns hours-increase-btn"
+                    data-type-of-btn="1"
+                    data-type-of-time="hour"
+                  >
                     <i class="fas fa-angle-up"></i>
                   </button>
-
-                  
-                  <button class="todo-timer-btns decrease-btns hours-decrease-btn">
-                      <i class="fas fa-angle-down"></i>
-                    </button>
-                    
-                    <h2 class="todo-timer-hours-display">00</h2>
+                  <button
+                    class="todo-timer-btns decrease-btns hours-decrease-btn"
+                    data-type-of-btn="-1"
+                    data-type-of-time="hour"
+                  >
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                  <h2 class="todo-timer-hours-display">00</h2>
                 </div>
-
+                <!-- hours-timer -->
                 <span>:</span>
 
                 <div class="todo-timer-counters todo-timer-mins">
-
-                    <button class="todo-timer-btns increase-btns minutes-increase-btn">
-                    <i class="fas fa-angle-up"></i>
-                    </button>
-                    <button class="todo-timer-btns decrease-btns minutes-decrease-btn">
-                      <i class="fas fa-angle-down"></i>
-                    </button>
-                    <h2 class="todo-timer-mins-display">00</h2>
-
-                </div>
-
-                <span>:</span>
-
-                <div class="todo-timer-counters todo-timer-sec ">
-
-                  <button class="todo-timer-btns increase-btns seconds-increase-btn">
+                  <button
+                    class="todo-timer-btns increase-btns minutes-increase-btn"
+                    data-type-of-btn="1"
+                    data-type-of-time="minute"
+                  >
                     <i class="fas fa-angle-up"></i>
                   </button>
-
-                  
-                  <button class="todo-timer-btns decrease-btns seconds-decrease-btn">
-                      <i class="fas fa-angle-down"></i>
-                    </button>
-                    <h2 class="todo-timer-secs-display">00</h2>
-
+                  <button
+                    class="todo-timer-btns decrease-btns minutes-decrease-btn"
+                    data-type-of-btn="-1"
+                    data-type-of-time="minute"
+                  >
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                  <h2 class="todo-timer-mins-display">00</h2>
                 </div>
+                <!-- minutes-timer -->
+                <span>:</span>
+
+                <div class="todo-timer-counters todo-timer-sec">
+                  <button
+                    class="todo-timer-btns increase-btns seconds-increase-btn"
+                    data-type-of-btn="1"
+                    data-type-of-time="second"
+                  >
+                    <i class="fas fa-angle-up"></i>
+                  </button>
+                  <button
+                    class="todo-timer-btns decrease-btns seconds-decrease-btn"
+                    data-type-of-btn="-1"
+                    data-type-of-time="second"
+                  >
+                    <i class="fas fa-angle-down"></i>
+                  </button>
+                  <h2 class="todo-timer-secs-display">00</h2>
+                </div>
+                <!-- seconds-timer -->
               </div>
               <!-- create-todo-inputs-time -->
             </div>

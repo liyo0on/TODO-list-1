@@ -245,7 +245,8 @@
                         gap: 5px;
                     }
                         .todo-timer-counters{
-                            padding: 0 10px;
+                            width: 30px;
+                            height: 30px;
                             border: 1px solid var(--light-yellow);
                             text-align: center;
                             display: flex;
@@ -253,6 +254,7 @@
                             align-items: center;
                             flex-direction: column;
                             /*display flex*/
+                            padding:10px;
                             position: relative;
                         }
                             .todo-timer-btns{

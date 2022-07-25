@@ -1,7 +1,7 @@
-window.addEventListener('click',function (e) {
-    this.navigator.clipboard.writeText(e.target.className)
-    console.log(e.target)
-})
+// window.addEventListener('click',function (e) {
+//     this.navigator.clipboard.writeText(e.target.className)
+//     console.log(e.target)
+// })
 // 
 // 
 // 
@@ -17,17 +17,22 @@ let mediumPriorityInput = document.getElementById('medium-priority')
 let lowPriorityInput = document.getElementById('low-priority')
 let priorityLabels = document.querySelectorAll('.priority-labels')
 let prioritiesTitle = document.querySelector('.priority-labels-title')
-let counter = 0
 
-let newElement = function (elementClassName) {
+
+let getNewElement = function (elementClassName) {
     let newElem = document.querySelector(elementClassName)
     return newElem
 }
 
-let newElements = function (elementsClassName) {
+let getNewElements = function (elementsClassName) {
     let newElems = document.querySelectorAll(elementsClassName)
     return newElems
 }
+
+
+
+
+getNewElement('.create-todo-form').addEventListener('click',function (e) {e.preventDefault(0)})
 
 function changePriorityTitle() {
     priorityLabels.forEach((e) => {
@@ -36,31 +41,82 @@ function changePriorityTitle() {
         })
     });
 }
+
+
+
+
 function openPriorityMenuHandler() {
     counter++
     if(counter % 2 === 1) {
-        newElement('.open-priorities-menu-btn').innerHTML = '<i class="fas fa-caret-down"></i>'
-        newElement('.priorities-options-menu').style.display = 'initial'
+        getNewElement('.open-priorities-menu-btn').innerHTML = '<i class="fas fa-caret-down"></i>'
+        getNewElement('.priorities-options-menu').style.display = 'initial'
     }
     if(counter % 2 === 0) {
-        newElement('.open-priorities-menu-btn').innerHTML = '<i class="fas fa-caret-right"></i>'
-        newElement('.priorities-options-menu').style.display = 'none'
+        getNewElement('.open-priorities-menu-btn').innerHTML = '<i class="fas fa-caret-right"></i>'
+        getNewElement('.priorities-options-menu').style.display = 'none'
     } 
 }
 
+
+
+
 function closePriorityMenu() {
-    newElement('.priorities-options-menu').style.display = 'none'
+    getNewElement('.priorities-options-menu').style.display = 'none'
 }
 
 
 function resetPanel() {
-    newElement('.title-input').value = ''
-    newElement('.description-input').value = ''
-    newElement('.link-input').value = ''
-    newElement('.link-label').value = ''
-    newElement('.priority-labels-title').innerHTML = 'choose priority'
-
+    getNewElement('.title-input').value = ''
+    getNewElement('.description-input').value = ''
+    getNewElement('.link-input').value = ''
+    getNewElement('.link-label').value = ''
+    getNewElement('.priority-labels-title').innerHTML = 'choose priority'
 }
+
+
+
+let hoursTimersCounter = 0
+let minutesTimersCounter = 0
+let secondsTimersCounter = 0
+let hoursDisplay = getNewElement('.todo-timer-hours-display')
+let minsDisplay = getNewElement('.todo-timer-mins-display')
+let secsDisplay = getNewElement('.todo-timer-secs-display')
+let newTodoTimerBtns = getNewElements('.todo-timer-btns')
+
+newTodoTimerBtns.forEach((e) => {
+    let isIncreaseBtn
+    e.addEventListener('click',(e)=>{
+        if(e.target.parentElement.dataset.typeOfBtn === '1') isIncreaseBtn = true
+        if(e.target.parentElement.dataset.typeOfBtn === '-1') isIncreaseBtn = false
+        
+        let typeOfTime = e.target.parentElement.dataset.typeOfTime
+        NewTodoIncreaseBtns(typeOfTime,isIncreaseBtn)
+        NewTodoDecreaseBtns(typeOfTime,isIncreaseBtn)
+    })
+});
+
+function NewTodoIncreaseBtns(typeOfTime,isIncreaseBtn) {
+    if(typeOfTime === 'hour' && isIncreaseBtn) hoursDisplay.innerHTML = hoursTimersCounter++
+    if(typeOfTime === 'minute' && isIncreaseBtn) minsDisplay.innerHTML = minutesTimersCounter++
+    if(typeOfTime === 'second' && isIncreaseBtn) secsDisplay.innerHTML = secondsTimersCounter++
+}
+function NewTodoDecreaseBtns(typeOfTime,isIncreaseBtn) {
+    if(typeOfTime === 'hour' && !isIncreaseBtn){
+        hoursDisplay.innerHTML = hoursTimersCounter--
+        if(hoursTimersCounter < 0) hoursTimersCounter = 0
+    } 
+    if(typeOfTime === 'minute' && !isIncreaseBtn){
+        minsDisplay.innerHTML = minutesTimersCounter--
+        if(minutesTimersCounter < 0) minutesTimersCounter = 0
+    }
+    
+    if(typeOfTime === 'second' && !isIncreaseBtn) {
+        secsDisplay.innerHTML = secondsTimersCounter--
+        if(secondsTimersCounter < 0) secondsTimersCounter = 0
+        
+    }
+}
+
 function createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoLinkLabel,lowPriority,mediumPriority,highPriority){
     let priorityColor
     if(lowPriority) priorityColor = lowPriorityInput.value
@@ -101,7 +157,7 @@ function createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoL
 </li>
     `)    
 }
-newElement('.open-priorities-menu-btn').addEventListener('click',priorityPanel)
+getNewElement('.open-priorities-menu-btn').addEventListener('click',priorityPanel)
 function priorityPanel(e) {
     e.preventDefault()
     openPriorityMenuHandler()
