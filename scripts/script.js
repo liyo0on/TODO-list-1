@@ -5,6 +5,7 @@
 // 
 // 
 // 
+
 let newTodoForm = document.querySelector('.todos-list-ul')
 let newTodoFormSubmitBtn = document.querySelector('.create-form-submit-btn')
 let newTodoFormTitleInput = document.querySelector('.title-input')
@@ -73,6 +74,7 @@ function resetPanel() {
     getNewElement('.priority-labels-title').innerHTML = 'choose priority'
 }
 
+<<<<<<< HEAD
 
 
 let hoursTimersCounter = 0
@@ -117,6 +119,22 @@ function NewTodoDecreaseBtns(typeOfTime,isIncreaseBtn) {
     }
 }
 
+=======
+newTodoFormSubmitBtn.addEventListener('click',function (e) {
+
+    let newTodoTitle = newTodoFormTitleInput.value
+    let newTodoDescription =newTodoFormDescriptionInput.value
+    let newTodoLinkUrl = newTodoFormLinkInput.value
+    let newTodoLinkLabel = newTodoFormLinkLabelInput.value
+    let lowPriority = lowPriorityInput.checked
+    let mediumPriority = mediumPriorityInput.checked
+    let highPriority = highPriorityInput.checked
+
+    createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoLinkLabel,lowPriority,mediumPriority,highPriority)
+    resetPanel()
+    closePriorityMenu()
+})
+>>>>>>> master
 function createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoLinkLabel,lowPriority,mediumPriority,highPriority){
     let priorityColor
     if(lowPriority) priorityColor = lowPriorityInput.value
@@ -157,24 +175,20 @@ function createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoL
 </li>
     `)    
 }
+<<<<<<< HEAD
 getNewElement('.open-priorities-menu-btn').addEventListener('click',priorityPanel)
+=======
+
+
+
+
+
+
+newElement('.create-todo-form').addEventListener('click',(e)=>{e.preventDefault()})
+newElement('.open-priorities-menu-btn').addEventListener('click',priorityPanel)
+>>>>>>> master
 function priorityPanel(e) {
-    e.preventDefault()
     openPriorityMenuHandler()
     changePriorityTitle()
 }
 
-newTodoFormSubmitBtn.addEventListener('click',function (e) {
-    e.preventDefault()
-    let newTodoTitle = newTodoFormTitleInput.value
-    let newTodoDescription =newTodoFormDescriptionInput.value
-    let newTodoLinkUrl = newTodoFormLinkInput.value
-    let newTodoLinkLabel = newTodoFormLinkLabelInput.value
-    let lowPriority = lowPriorityInput.checked
-    let mediumPriority = mediumPriorityInput.checked
-    let highPriority = highPriorityInput.checked
-
-    createNewTodo(newTodoTitle , newTodoDescription,newTodoLinkUrl,newTodoLinkLabel,lowPriority,mediumPriority,highPriority)
-    resetPanel()
-    closePriorityMenu()
-})
