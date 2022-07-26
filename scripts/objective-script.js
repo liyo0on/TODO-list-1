@@ -27,25 +27,36 @@ let createNewTodoPanel = {
             increaseBtn : document.querySelector('.hours-increase-btn'),
             decreaseBtn : document.querySelector('.hours-decrease-btn'),
             timeLimit : 12,
-            counter : 0
+            counter : 0,
+            
         },
         minutes : {
             display : document.querySelector('.todo-timer-mins-display'),
             increaseBtn:document.querySelector('.minutes-increase-btn'),
             decreaseBtn : document.querySelector('.minutes-decrease-btn'),
             timeLimit : 60,
-            counter : 0
+            counter : 0,
+            
         },
         seconds : {
             display : document.querySelector('.todo-timer-secs-display'),
             increaseBtn:document.querySelector('.seconds-increase-btn'),
             decreaseBtn : document.querySelector('.seconds-decrease-btn'),
             timeLimit : 60,
-            counter : 0
+            counter : 0,
+           
         }
     },
-    submit : document.querySelector('.create-form-submit-btn')
+    submit : document.querySelector('.create-form-submit-btn'),
+    allTimerBtn : document.querySelectorAll('.todo-timer-btns')
+    
 }
+createNewTodoPanel.allTimerBtn.forEach((e) => {
+    e.addEventListener('click',(e)=>{
+        let data = e.target.parentElement.dataset.typeOfBtn
+        newTodoTimerHandler(data)
+    })
+});
 
 let newTodoObject = {
     Id : null,
@@ -68,27 +79,103 @@ createNewTodoPanel.priorityMenu.openPriorityMenuBtn.addEventListener('click',()=
     
 })
 
-function newTodoTimerHandler(timeLimit,checkIncrease,display,counter) {
-    let isIncrease = checkIncrease
-    if(isIncrease && counter > 0 && counter < timeLimit){
-        counter++
-        display.innerHTML = counter
+let hoursCounter = 0
+let minCounter = 0 
+let secCounter = 0
+
+function newTodoTimerHandler(key) {
+
+    switch (key ) {
+        case 'increaseHour':
+            hoursCounter++
+            if(hoursCounter <10){
+                createNewTodoPanel.timers.hours.display.innerHTML = "0" + hoursCounter
+                break;
+            }
+            if(hoursCounter > 12)
+            {
+                hoursCounter = 0 
+                createNewTodoPanel.timers.hours.display.innerHTML = "0" + hoursCounter
+                break
+            }
+
+            createNewTodoPanel.timers.hours.display.innerHTML = hoursCounter
+            break;
+        case 'increaseMin':
+            minCounter++
+            if(minCounter < 10){
+                createNewTodoPanel.timers.minutes.display.innerHTML = "0" + minCounter
+                break;
+            }
+            if(minCounter > 60)
+            {
+                minCounter = 0 
+                createNewTodoPanel.timers.minutes.display.innerHTML = "0" +  minCounter
+                break
+            }
+            createNewTodoPanel.timers.minutes.display.innerHTML = minCounter
+            break;
+        case 'increaseSec':
+            secCounter++
+            if(secCounter < 10){
+                createNewTodoPanel.timers.seconds.display.innerHTML = "0" + secCounter
+                break;
+            }
+            if(secCounter > 60)
+            {
+                secCounter = 0 
+                createNewTodoPanel.timers.seconds.display.innerHTML = "0" + secCounter
+                break
+            }
+            createNewTodoPanel.timers.seconds.display.innerHTML = secCounter
+            break;
+        case 'decreaseHour':
+            hoursCounter--
+            
+            if(hoursCounter < 0){
+                createNewTodoPanel.timers.hours.display.innerHTML = 12
+                hoursCounter = 12 
+                break
+            }
+            else if (hoursCounter < 10 ){
+                createNewTodoPanel.timers.hours.display.innerHTML = "0" + hoursCounter
+                break
+            }
+            createNewTodoPanel.timers.hours.display.innerHTML = hoursCounter
+            break;
+        case 'decreaseMin':
+            minCounter--
+            if(minCounter < 0)
+            {
+                createNewTodoPanel.timers.minutes.display.innerHTML = 59   
+                minCounter = 59
+                break
+            }
+
+            else if( minCounter < 10 ){
+                createNewTodoPanel.timers.minutes.display.innerHTML = "0" + minCounter
+                break
+            }
+                createNewTodoPanel.timers.minutes.display.innerHTML = minCounter
+                break;
+        case 'decreaseSec':
+            secCounter--
+            if(secCounter < 0)
+            {
+                createNewTodoPanel.timers.seconds.display.innerHTML = 59
+                secCounter = 59
+                break
+            }
+            if(secCounter < 10 ){
+                createNewTodoPanel.timers.seconds.display.innerHTML = "0" + secCounter
+                break
+            }
+            createNewTodoPanel.timers.seconds.display.innerHTML = secCounter
+            break;
+            
     }
 }
-
-createNewTodoPanel.timers.hours.increaseBtn.addEventListener('click',()=>{
-    newTodoTimerHandler(createNewTodoPanel.timers.hours.timeLimit,true,createNewTodoPanel.timers.hours.display,createNewTodoPanel.timers.hours.counter)
-})
-
-createNewTodoPanel.timers.hours.decreaseBtn.addEventListener('click',()=>{
-    newTodoTimerHandler(createNewTodoPanel.timers.hours.timeLimit,false,createNewTodoPanel.timers.hours.display)
-
-})
-
-createNewTodoPanel.timers.minutes.increaseBtn.addEventListener('click',()=>{
-    newTodoTimerHandler(createNewTodoPanel.timers.minutes.timeLimit,true,createNewTodoPanel.timers.minutes.display)
-})
-
+    
 
 
  function randomNum() {
@@ -147,7 +234,5 @@ function createNewTodo(title,description,link,labelOfLink,low,high,medium) {
         </button>
     </div>
 </li>
-    `) 
+    `) }
 
-
-}
