@@ -20,6 +20,9 @@
     --fs-x-large : 20px;
     --fs-xx-large : 24px;
 }
+.display-none{
+    display: none;
+}
 .container{
     /*display flex*/
     display: flex;
@@ -186,6 +189,8 @@
                                 border: none;
                                 font-size: 20px;
                             }
+
+                            
                             .priorities-options-menu{
                                 width: 100%;
                                 position: absolute;
@@ -196,8 +201,11 @@
                                 padding: 5px;
                                 cursor: pointer;
                                 text-transform: uppercase;
-                                display: none;
                                 
+                                
+                            }
+                            .open-priorities-menu-btn:hover{
+                                background-color: red;
                             }
                             .priorities-options label{
                                 width: 100%;
@@ -211,9 +219,6 @@
                                 width: 100%;
                                 color: var(--light-yellow);
                             }
-                    .priorities input{
-                        /* display: none; */
-                    }
                     .create-todo-form-inputs input{
                         background-color: transparent;
                         /* border: none; */
